@@ -1,8 +1,11 @@
-// Includes
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 int main(int argc, char** argv) {
 
-    srand(time(NULL));
+    srand(time(nullptr));
 
     Matrix<double> m1;
 
