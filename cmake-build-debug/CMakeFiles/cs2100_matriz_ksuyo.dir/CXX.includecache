@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Macros.h
+
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Nodes.h
+Macros.h
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Macros.h
+Pixel.h
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Pixel.h
+
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Pixel.h
+
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/SparseMatrix.h
+iostream
+-
+fstream
+-
+Nodes.h
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Nodes.h
+
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/main.cpp
+SparseMatrix.h
+/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/SparseMatrix.h
+

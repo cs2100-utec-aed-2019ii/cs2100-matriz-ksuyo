@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cs2100_matriz_ksuyo"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cs2100_matriz_ksuyo">
+				<Option output="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug/cs2100_matriz_ksuyo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/."/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 cs2100_matriz_ksuyo"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cs2100_matriz_ksuyo/fast">
+				<Option output="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug/cs2100_matriz_ksuyo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/."/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 cs2100_matriz_ksuyo/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/benjamindiaz/CLionProjects/Ciclo\ 4/cs2100-matriz-ksuyo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Macros.h">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Nodes.h">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Pixel.h">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/README.md">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/SparseMatrix.h">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/main.cpp">
+			<Option target="cs2100_matriz_ksuyo"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

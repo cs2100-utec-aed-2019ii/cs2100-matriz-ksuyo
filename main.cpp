@@ -15,7 +15,7 @@ template <typename T>
 SparseMatrix<T>& inv(const SparseMatrix<T>& sm1);
 
 int main(int argc, char** argv) {
-
+/*
     srand(time(nullptr));
 
     SparseMatrix<double> m1;
@@ -44,9 +44,32 @@ int main(int argc, char** argv) {
     ofstream _out_i("res.txt");
     _out_i << m_image;
     _out_i.close();
+*/
+    SparseMatrix<int> m1;
 
-    return 1;
+    m1.insert(0, 0, 5);
+    m1.insert(1, 1, 10);
+    cout << m1.xAxis->x << " " << m1.yAxis->y << endl;
+
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 template <typename T>
 SparseMatrix<T>& mult(const SparseMatrix<T>& sm1, const SparseMatrix<T>& sm2) {
