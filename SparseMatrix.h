@@ -34,12 +34,10 @@ public:
             // TODO: revisar si ya existe el indice
             auto new_x = new HeaderNode<T, true> (col);
             auto temp = xAxis;
-            if (xAxis->right == nullptr) {
-                cout << "Entra" << endl;
-                while (temp->right->x < new_x->x) {
+            if (xAxis->right != xAxis) {
+                while (temp->right->x < new_x->x && temp->right != xAxis) {
                     temp = temp->right;
                 }
-                cout << "sale" << endl;
                 if (temp->right != nullptr) {
                     auto temp_right = temp->right;
                     temp->right = new_x;
@@ -69,8 +67,8 @@ public:
             // TODO: revisar si ya existe el indice
             auto new_y = new HeaderNode<T, false> (row);
             auto temp = yAxis;
-            if (yAxis->down == nullptr) {
-                while (temp->down->y < new_y->y) {
+            if (yAxis->down != yAxis) {
+                while (temp->down->y < new_y->y && temp->down != yAxis) {
                     temp = temp->down;
                 }
                 if (temp->down != nullptr) {
