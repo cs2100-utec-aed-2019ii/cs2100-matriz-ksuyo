@@ -52,7 +52,10 @@ int main(int argc, char** argv) {
     m1.insert(0, 0, 5);
     m1.insert(1, 1, 10);
     m1.insert(2, 2, 20);
-    cout << m1.xAxis->x << " " << m1.yAxis->y << endl;
+    m1.insert(5, 5, 30);
+    m1.insert(3, 5, 100);
+
+    cout << m1;
 
     return 0;
 }

@@ -32,10 +32,28 @@ public:
             xAxis->right = xAxis;
         } else {
             // TODO: revisar si ya existe el indice
+
+            auto check_x = xAxis;
+
+            if (check_x->x == col){
+                goto y;
+            }
+            check_x = check_x->right;
+            while (check_x != xAxis){
+                if (check_x->x == col){
+                    goto y;
+                }
+                check_x = check_x->right;
+            }
+
             auto new_x = new HeaderNode<T, true> (col);
             auto temp = xAxis;
             if (xAxis->right != xAxis) {
                 while (temp->right->x < new_x->x && temp->right != xAxis) {
+                    if (temp->x == col){
+                        cout << "Ya existe" << endl;
+                        goto y;
+                    }
                     temp = temp->right;
                 }
                 if (temp->right != nullptr) {
@@ -59,12 +77,27 @@ public:
             }
         }
 
+        y:
 
         if (yAxis == nullptr){
             yAxis = new HeaderNode<T, false> (row);
             yAxis->down = yAxis;
         } else {
             // TODO: revisar si ya existe el indice
+
+            auto check_y = yAxis;
+
+            if (check_y->y == row){
+                goto end;
+            }
+            check_y = check_y->down;
+            while (check_y != yAxis){
+                if (check_y->y == row){
+                    goto end;
+                }
+                check_y = check_y->down;
+            }
+
             auto new_y = new HeaderNode<T, false> (row);
             auto temp = yAxis;
             if (yAxis->down != yAxis) {
@@ -91,6 +124,9 @@ public:
                 }
             }
         }
+        
+        end:
+            int x = 0;
 
     }
 
@@ -103,6 +139,27 @@ public:
     /// Operator Overloading
 
     inline friend std::ostream& operator<< (std::ostream& os, SparseMatrix<T>& sm) {
+        auto smx = sm.xAxis;
+        auto smy = sm.yAxis;
+
+        os << "x: " << endl;
+        os << smx->x << " ";
+        smx = smx->right;
+        while (smx != sm.xAxis) {
+            os << smx->x << " ";
+            smx = smx->right;
+        }
+
+        os << "\ny: " << endl;
+        os << smy->y << " ";
+        smy = smy->down;
+        while (smy != sm.yAxis) {
+            os << smy->y << " ";
+            smy = smy->down;
+        }
+
+        return os;
+
         // TODO: print matrix with 0s and the data. Example:
         // 0 0 0 1
         // 1 0 0 5
