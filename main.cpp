@@ -56,6 +56,9 @@ int main(int argc, char** argv) {
     m1.insert(3, 5, 100);
 
     cout << m1;
+    cout << endl;
+    cout << "filas: " << m1.rows << ", columnas: " << m1.columns << endl;
+
 
     return 0;
 }

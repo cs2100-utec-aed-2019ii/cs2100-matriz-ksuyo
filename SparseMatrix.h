@@ -31,8 +31,6 @@ public:
             xAxis = new HeaderNode<T, true> (col);
             xAxis->right = xAxis;
         } else {
-            // TODO: revisar si ya existe el indice
-
             auto check_x = xAxis;
 
             if (check_x->x == col){
@@ -50,10 +48,6 @@ public:
             auto temp = xAxis;
             if (xAxis->right != xAxis) {
                 while (temp->right->x < new_x->x && temp->right != xAxis) {
-                    if (temp->x == col){
-                        cout << "Ya existe" << endl;
-                        goto y;
-                    }
                     temp = temp->right;
                 }
                 if (temp->right != nullptr) {
@@ -76,15 +70,13 @@ public:
                 }
             }
         }
-
+        columns++;
         y:
 
         if (yAxis == nullptr){
             yAxis = new HeaderNode<T, false> (row);
             yAxis->down = yAxis;
         } else {
-            // TODO: revisar si ya existe el indice
-
             auto check_y = yAxis;
 
             if (check_y->y == row){
@@ -124,9 +116,81 @@ public:
                 }
             }
         }
-        
+        rows++;
         end:
-            int x = 0;
+
+        auto new_node = new ElementNode<T> (col, row, data);
+        auto tempx = xAxis;
+        auto tempy = yAxis;
+
+        while (tempx->x != col){
+            tempx = tempx->right;
+        }
+
+        while (tempy->y != row){
+            tempy = tempy->down;
+        }
+
+        if (tempx->down == nullptr){
+            tempx->down = new_node;
+            new_node->downToHeader = tempx;
+            new_node->down = nullptr;
+        } else if (tempx->down->downToHeader == tempx) {
+            if (tempx->down->y > new_node->y){
+                auto temp_new_down = tempx->down;
+                tempx->down = new_node;
+                new_node->down = temp_new_down;
+                temp_new_down->downToHeader = tempx;
+            } else {
+                tempx->down->down = new_node;
+                new_node->downToHeader = tempx;
+                new_node->down = nullptr;
+            }
+        } else {
+            auto temp = tempx->down;
+            int contador = 0;
+
+            while(temp->down->y < new_node->y && contador < rows-1) {
+                temp = temp->down;
+                contador++;
+            }
+
+            auto aux = temp->down;
+            temp->down = new_node;
+            new_node->down = aux;
+        }
+
+//TODO
+
+        if (tempy->right == nullptr){
+            tempy->right = new_node;
+            new_node->rightToHeader = yAxis;
+            new_node->right = nullptr;
+        } else if (tempy->right->rightToHeader == tempy) {
+            if (tempy->right->x > new_node->x){
+                auto temp_new_right = tempy->right;
+                tempy->right = new_node;
+                new_node->right = temp_new_right;
+                temp_new_right->rightToHeader = tempy;
+            } else {
+                tempy->right->right = new_node;
+                new_node->rightToHeader = tempy;
+                new_node->right = nullptr;
+            }
+        } else {
+            auto temp = tempy->right;
+            int contador = 0;
+
+            while(temp->right->x < new_node->y && contador < columns-1) {
+                temp = temp->right;
+                contador++;
+            }
+
+            auto aux = temp->right;
+            temp->right = new_node;
+            new_node->right = aux;
+        }
+
 
     }
 
