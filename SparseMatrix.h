@@ -197,7 +197,76 @@ public:
     /// Erase
 
     void erase(const NumericType& row, const NumericType& col) {
-        // TODO: erase
+        /// Encontrar el eje Y y X
+        auto xPrev = xAxis;
+        auto yPrev = yAxis;
+        auto xAxisTemp = xAxis;
+        auto yAxisTemp = yAxis;
+
+        int contX = 0;
+        int contY = 0;
+
+        while (xAxisTemp->x != col) {
+            if (contX == columns) return;
+            contX++;
+            xPrev = xAxisTemp;
+            xAxisTemp = xAxisTemp->right;
+        }
+
+        while (yAxisTemp->y != row) {
+            if (contY == rows) return;
+            contY++;
+            yPrev = yAxisTemp;
+            yAxisTemp = yAxisTemp->down;
+        }
+
+        /// Encontrar el nodo
+
+        auto tempx = xAxisTemp->down;
+        auto tempy = yAxisTemp->right;
+
+        auto auxX = tempx;
+        auto auxY = tempy;
+
+        while (tempx->y != row && tempx->down != nullptr) {
+            auxX = tempx;
+            tempx = tempx->down;
+        }
+
+        auto nodeToDeleteX = tempx;
+
+        /// Si es el primero
+        if (auxX->data == tempx->data) {
+            /// Si es el unico
+            if (auxX->down == nullptr) {
+                xPrev->right = xAxisTemp->right;
+                delete xAxisTemp;
+                columns--;
+            } else {
+                xAxisTemp->down = tempx->down;
+            }
+        }
+
+        while (tempy->x != col && tempx->right != nullptr) {
+            auxY = tempy;
+            tempy = tempy->right;
+        }
+
+        auto nodeToDeleteY = tempy;
+
+        /// Si es el primero
+        if (auxY->data == tempy->data) {
+            /// Si es el unico
+            if (auxY->right == nullptr) {
+                yPrev->down = yAxisTemp->down;
+                delete yAxisTemp;
+                rows--;
+            } else {
+                yAxisTemp->right = tempy->right;
+            }
+        }
+
+        delete nodeToDeleteX;
     }
 
     /// Operator Overloading
