@@ -235,10 +235,32 @@ public:
 
         auto nodeToDeleteX = tempx;
 
+
         /// Si es el primero
         if (auxX->data == tempx->data) {
             /// Si es el unico
             if (auxX->down == nullptr) {
+                /// Si es el primer header
+                if (xPrev->x == xAxisTemp->x) {
+                    /// Si soy el unico header
+                    if (xPrev->right == xPrev){
+                        delete xAxis;
+                        xAxis = nullptr;
+                    } else {
+                        /// Ir al ultimo
+                        auto lastX = xPrev;
+                        auto rightXPrev = xPrev->right;
+                        while (lastX->right != xPrev){
+                            lastX = lastX->right;
+                        }
+                        xAxis = rightXPrev;
+                        lastX->right = rightXPrev;
+                        delete xPrev;
+                        //cout << "FINALX: " << lastX->x << ", xxprevrigt: " << lastX->right->x <<endl;
+                    }
+                    columns--;
+                    goto headerY;
+                }
                 xPrev->right = xAxisTemp->right;
                 delete xAxisTemp;
                 columns--;
@@ -247,24 +269,45 @@ public:
             }
         }
 
+        headerY:
+
         while (tempy->x != col && tempx->right != nullptr) {
             auxY = tempy;
             tempy = tempy->right;
         }
 
-        auto nodeToDeleteY = tempy;
 
         /// Si es el primero
         if (auxY->data == tempy->data) {
-            /// Si es el unico
-            if (auxY->right == nullptr) {
-                yPrev->down = yAxisTemp->down;
-                delete yAxisTemp;
+            if (yPrev->y == yAxisTemp->y) {
+                ///Si soy el unico header
+                if (yPrev->down == yPrev){
+                    delete yAxis;
+                    yAxis = nullptr;
+                } else {
+                    cout << "entre" << endl;
+                    ///Ir al ultimo
+                    auto lastY = yPrev;
+                    auto downYPrev = yPrev->down;
+                    while (lastY->down != yPrev){
+                        lastY = lastY->down;
+                    }
+                    yAxis = downYPrev;
+                    lastY->down = downYPrev;
+                    delete yPrev;
+                }
                 rows--;
+                goto endHeaders;
+            }
+
+            yPrev->down = yAxisTemp->down;
+            delete yAxisTemp;
+            rows--;
             } else {
                 yAxisTemp->right = tempy->right;
             }
-        }
+
+        endHeaders:
 
         delete nodeToDeleteX;
     }
