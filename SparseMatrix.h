@@ -26,7 +26,39 @@ public:
     /// Insert
 
     void insert(const NumericType& row, const NumericType& col, T data) {
-        // TODO: insert
+
+        if (columns != 0 && rows != 0) {
+            auto busquedaX = xAxis;
+            auto busquedaY = yAxis;
+            int contador = 0;
+
+            while (busquedaX->x != col) {
+                busquedaX = busquedaX->right;
+                if (contador == columns) {
+                    goto start;
+                }
+                contador++;
+            }
+
+            contador = 0;
+
+            while (busquedaY->y != row) {
+                busquedaY = busquedaY->down;
+                if (contador == rows) {
+                    goto start;
+                }
+                contador++;
+            }
+
+        } else {
+            goto start;
+        }
+
+        cout << "La posición ya está ocupada" << endl;
+        return;
+
+        start:
+
         if (xAxis == nullptr){
             xAxis = new HeaderNode<T, true> (col);
             xAxis->right = xAxis;
@@ -256,7 +288,6 @@ public:
                         xAxis = rightXPrev;
                         lastX->right = rightXPrev;
                         delete xPrev;
-                        //cout << "FINALX: " << lastX->x << ", xxprevrigt: " << lastX->right->x <<endl;
                     }
                     columns--;
                     goto headerY;
@@ -285,7 +316,6 @@ public:
                     delete yAxis;
                     yAxis = nullptr;
                 } else {
-                    cout << "entre" << endl;
                     ///Ir al ultimo
                     auto lastY = yPrev;
                     auto downYPrev = yPrev->down;
