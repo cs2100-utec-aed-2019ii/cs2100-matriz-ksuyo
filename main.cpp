@@ -49,22 +49,25 @@ int main(int argc, char** argv) {
 
     SparseMatrix<int> m1;
 
-    m1.insert(0, 0, 5);
+/*    m1.insert(0, 0, 5);
     m1.insert(1, 1, 10);
     m1.insert(2, 2, 20);
     m1.insert(3, 5, 100);
-    m1.insert(5, 5, 30);
+    m1.insert(5, 5, 30); */
 
+    m1.insert(1, 3, 20);
+    m1.insert(3, 1, 40);
+    m1.insert(1, 1, 80);
 
 
     cout << "filas: " << m1.rows << ", columnas: " << m1.columns << endl;
 
     cout << m1;
 
-    m1.erase(0, 0);
-    cout << "\nfilas: " << m1.rows << ", columnas: " << m1.columns << endl;
+    //m1.erase(0, 0);
+    //cout << "\nfilas: " << m1.rows << ", columnas: " << m1.columns << endl;
 
-    cout << m1;
+    //cout << m1;
 
     return 0;
 }

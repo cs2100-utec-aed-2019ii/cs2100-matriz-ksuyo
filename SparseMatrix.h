@@ -29,7 +29,6 @@ public:
 
         if (columns != 0 && rows != 0) {
             auto busquedaX = xAxis;
-            auto busquedaY = yAxis;
             int contador = 0;
 
             while (busquedaX->x != col) {
@@ -39,21 +38,25 @@ public:
                 }
                 contador++;
             }
+            auto aux = busquedaX->down;
+            if (aux->y > row) {
+                goto start;
+            }
 
-            contador = 0;
-
-            while (busquedaY->y != row) {
-                busquedaY = busquedaY->down;
-                if (contador == rows) {
-                    goto start;
-                }
-                contador++;
+            while (aux->y < row) {
+                aux = aux->down;
+            }
+            if (aux->y == row){
+                goto fail;
+            } else {
+                goto start;
             }
 
         } else {
             goto start;
         }
 
+        fail:
         cout << "La posición ya está ocupada" << endl;
         return;
 
