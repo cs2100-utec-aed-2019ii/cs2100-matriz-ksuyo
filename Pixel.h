@@ -18,6 +18,10 @@ struct Pixel {
         }
     }
 
+    friend bool operator== (const Pixel &p1, const Pixel &p2) {
+        return (p1.r == p2.r && p1.g == p2.g && p1.b == p2.b);
+    }
+
 };
 
 
