@@ -1,14 +1,14 @@
 //
-// Created by Gabriel Spranger Rojas on 11/6/19.
+// Created by Benjamin Diaz Garcia on 11/6/19.
 //
 
 #ifndef CS2100_MATRIZ_KSUYO_SPARSEMATRIX_H
 #define CS2100_MATRIZ_KSUYO_SPARSEMATRIX_H
 
+#include <opencv2/opencv.hpp>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
-
-using namespace std;
 
 #include "Nodes.h"
 
@@ -19,19 +19,21 @@ public:
     HeaderNode<T, false>* yAxis = nullptr;
     NumericType columns = 0;
     NumericType rows = 0;
+    int columnsMatrix = 0;
+    int rowsMatrix = 0;
 
 public:
     SparseMatrix() = default;
 
     /// Insert
 
-    void insert(const NumericType& row, const NumericType& col, T data) {
+    void insert(const NumericType& column, const NumericType& row, T data) {
 
         if (columns != 0 && rows != 0) {
             auto busquedaX = xAxis;
             int contador = 0;
 
-            while (busquedaX->x != col) {
+            while (busquedaX->x != row) {
                 busquedaX = busquedaX->right;
                 if (contador == columns) {
                     goto start;
@@ -40,15 +42,15 @@ public:
             }
 
             auto aux = busquedaX->down;
-            if (aux->y > row) {
+            if (aux->y > column) {
                 goto start;
             }
 
 
-            while (aux->y < row && aux->down != nullptr) {
+            while (aux->y < column && aux->down != nullptr) {
                 aux = aux->down;
             }
-            if (aux->y == row){
+            if (aux->y == column){
                 goto fail;
             } else {
                 goto start;
@@ -59,29 +61,29 @@ public:
         }
 
         fail:
-        cout << "La posición ya está ocupada" << endl;
+        std::cout << "La posición ya está ocupada" << std::endl;
         return;
 
         start:
 
         if (xAxis == nullptr){
-            xAxis = new HeaderNode<T, true> (col);
+            xAxis = new HeaderNode<T, true> (row);
             xAxis->right = xAxis;
         } else {
             auto check_x = xAxis;
 
-            if (check_x->x == col){
+            if (check_x->x == row){
                 goto y;
             }
             check_x = check_x->right;
             while (check_x != xAxis){
-                if (check_x->x == col){
+                if (check_x->x == row){
                     goto y;
                 }
                 check_x = check_x->right;
             }
 
-            auto new_x = new HeaderNode<T, true> (col);
+            auto new_x = new HeaderNode<T, true> (row);
             auto temp = xAxis;
             if (xAxis->right != xAxis) {
                 while (temp->right->x < new_x->x && temp->right != xAxis) {
@@ -111,23 +113,23 @@ public:
         y:
 
         if (yAxis == nullptr){
-            yAxis = new HeaderNode<T, false> (row);
+            yAxis = new HeaderNode<T, false> (column);
             yAxis->down = yAxis;
         } else {
             auto check_y = yAxis;
 
-            if (check_y->y == row){
+            if (check_y->y == column){
                 goto end;
             }
             check_y = check_y->down;
             while (check_y != yAxis){
-                if (check_y->y == row){
+                if (check_y->y == column){
                     goto end;
                 }
                 check_y = check_y->down;
             }
 
-            auto new_y = new HeaderNode<T, false> (row);
+            auto new_y = new HeaderNode<T, false> (column);
             auto temp = yAxis;
             if (yAxis->down != yAxis) {
                 while (temp->down->y < new_y->y && temp->down != yAxis) {
@@ -156,15 +158,15 @@ public:
         rows++;
         end:
 
-        auto new_node = new ElementNode<T> (col, row, data);
+        auto new_node = new ElementNode<T> (row, column, data);
         auto tempx = xAxis;
         auto tempy = yAxis;
 
-        while (tempx->x != col){
+        while (tempx->x != row){
             tempx = tempx->right;
         }
 
-        while (tempy->y != row){
+        while (tempy->y != column){
             tempy = tempy->down;
         }
 
@@ -187,7 +189,7 @@ public:
             auto temp = tempx->down;
             int contador = 0;
 
-            while(temp->down->y < new_node->y && contador < rows-1) {
+            while(temp->down != nullptr && temp->down->y < new_node->y && contador < rows-1) {
                 temp = temp->down;
                 contador++;
             }
@@ -233,7 +235,7 @@ public:
 
     /// Erase
 
-    void erase(const NumericType& row, const NumericType& col) {
+    void erase(const NumericType& column, const NumericType& row) {
         /// Encontrar el eje Y y X
         auto xPrev = xAxis;
         auto yPrev = yAxis;
@@ -243,14 +245,14 @@ public:
         int contX = 0;
         int contY = 0;
 
-        while (xAxisTemp->x != col) {
+        while (xAxisTemp->x != row) {
             if (contX == columns) return;
             contX++;
             xPrev = xAxisTemp;
             xAxisTemp = xAxisTemp->right;
         }
 
-        while (yAxisTemp->y != row) {
+        while (yAxisTemp->y != column) {
             if (contY == rows) return;
             contY++;
             yPrev = yAxisTemp;
@@ -265,7 +267,7 @@ public:
         auto auxX = tempx;
         auto auxY = tempy;
 
-        while (tempx->y != row && tempx->down != nullptr) {
+        while (tempx->y != column && tempx->down != nullptr) {
             auxX = tempx;
             tempx = tempx->down;
         }
@@ -307,7 +309,7 @@ public:
 
         headerY:
 
-        while (tempy->x != col && tempx->right != nullptr) {
+        while (tempy->x != row && tempx->right != nullptr) {
             auxY = tempy;
             tempy = tempy->right;
         }
@@ -413,29 +415,66 @@ public:
 
     }
 
+    /// Matrix
+
+    int** matrix() {
+        int** a2d = nullptr;
+        auto tempX = xAxis;
+        auto tempY = yAxis;
+
+        while (tempX->right != xAxis){
+            tempX = tempX->right;
+        }
+
+        while (tempY->down != yAxis){
+            tempY = tempY->down;
+        }
+
+        int maxX = tempX->x;
+        int maxY = tempY->y;
+
+        a2d = new int* [maxX+1];
+        for (int i = 0; i < maxX+1; ++i) {
+            a2d[i] = new int [maxY+1];
+        }
+        columnsMatrix = maxX+1;
+        rowsMatrix = maxY+1;
+
+        for (int i = 0; i < columnsMatrix; ++i) {
+            for (int j = 0; j < rowsMatrix; ++j) {
+                a2d[i][j] = 0;
+            }
+        }
+
+        return a2d;
+    }
+
     /// Operator Overloading
 
     inline friend std::ostream& operator<< (std::ostream& os, SparseMatrix<T>& sm) {
-        auto smx = sm.xAxis;
-        auto smy = sm.yAxis;
+       auto a = sm.matrix();
 
-        os << "x: " << endl;
-        os << smx->x << " ";
-        smx = smx->right;
-        while (smx != sm.xAxis) {
-            os << smx->x << " ";
-            smx = smx->right;
+       auto tempX = sm.xAxis;
+       int contador = 0;
+
+       while (contador < sm.columns) {
+           auto hijos = tempX->down;
+           while (hijos != nullptr){
+               a[hijos->x][hijos->y] = hijos->data;
+               hijos = hijos->down;
+           }
+           tempX = tempX->right;
+           contador++;
+       }
+
+        for (int i = 0; i < sm.columnsMatrix; ++i) {
+            for (int j = 0; j < sm.rowsMatrix; ++j) {
+                os << std::setw(4) << a[i][j] << " ";
+            }
+            os << std::endl;
         }
 
-        os << "\ny: " << endl;
-        os << smy->y << " ";
-        smy = smy->down;
-        while (smy != sm.yAxis) {
-            os << smy->y << " ";
-            smy = smy->down;
-        }
-
-        return os;
+       return os;
 
         // TODO: print matrix with 0s and the data. Example:
         // 0 0 0 1
@@ -447,8 +486,8 @@ public:
 
     SparseMatrix<T>* identity(const NumericType& row, const NumericType& col) {
         // TODO: return matriz with 1s in the diagonal, 0s elsewhere
-        int x = 0;
-        int y = 0;
+        int x;
+        int y;
         auto SM = new SparseMatrix();
 
         for (x = 0; x < row; ++x) {
@@ -461,11 +500,32 @@ public:
 
         return SM;
     }
+    /*
+    SparseMatrix<T>* load_from_image(const std::string& filename) {
+        cv::Mat image = imread("/Users/benjamindiaz/Desktop/lenna.png", cv::IMREAD_COLOR);
 
-    static SparseMatrix<T>& load_from_image(const std::string& filename) {
-        // TODO: return sparse matrix from file using CImg.h
+        auto h = image.rows;
+        auto w = image.cols;
+
+        auto Matriz = new SparseMatrix;
+
+        /// Iterating through image's pixels
+        for (int r = 0; r < h; ++r) {
+            for (int c = 0; c < w; ++c) {
+                auto pixelData = image.at<cv::Vec3b>(r, c); // [0] blue channel, [1] green channel, [2] red channel
+                auto red = pixelData[2];
+                auto green = pixelData[1];
+                auto blue = pixelData[0];
+                auto colorAvg = (red + green + blue) / 3;
+                if (colorAvg < 200) {
+                    Pixel pixel = Pixel(pixelData[2], pixelData[1], pixelData[0]);
+                    Matriz->insert(r, c, pixel);
+                }
+            }
+        }
+        return Matriz;
     }
-
+*/
     ~SparseMatrix() {
         clear();
     }

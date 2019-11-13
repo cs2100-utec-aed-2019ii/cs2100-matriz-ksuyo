@@ -8,5 +8,10 @@ include_directories(.)
 add_executable(cs2100_matriz_ksuyo
         Macros.h
         main.cpp
-        README.md
         SparseMatrix.h Nodes.h Pixel.h)
+
+
+find_package(OpenCV REQUIRED)
+set(SOURCE_FILES main.cpp Macros.h SparseMatrix.h Nodes.h Pixel.h)
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries( ${PROJECT_NAME} ${OpenCV_LIBS} )

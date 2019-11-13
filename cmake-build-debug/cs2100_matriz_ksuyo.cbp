@@ -5,7 +5,7 @@
 		<Option title="cs2100_matriz_ksuyo"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/cmake-build-debug"/>
@@ -45,6 +45,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/."/>
+					<Add directory="/usr/local/Cellar/opencv/4.1.2/include/opencv4"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -67,6 +68,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/."/>
+					<Add directory="/usr/local/Cellar/opencv/4.1.2/include/opencv4"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
@@ -91,9 +93,6 @@
 		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/Pixel.h">
 			<Option target="cs2100_matriz_ksuyo"/>
 		</Unit>
-		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/README.md">
-			<Option target="cs2100_matriz_ksuyo"/>
-		</Unit>
 		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/SparseMatrix.h">
 			<Option target="cs2100_matriz_ksuyo"/>
 		</Unit>
@@ -102,6 +101,18 @@
 		</Unit>
 		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/../../../../../usr/local/lib/cmake/opencv4/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
+		</Unit>
+		<Unit filename="/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/../../../../../usr/local/lib/cmake/opencv4/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\opencv4\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
