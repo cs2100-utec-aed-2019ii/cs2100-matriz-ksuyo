@@ -445,8 +445,21 @@ public:
 
     /// Static Methods
 
-    static SparseMatrix<T>& identity(const NumericType& row, const NumericType& col) {
+    SparseMatrix<T>* identity(const NumericType& row, const NumericType& col) {
         // TODO: return matriz with 1s in the diagonal, 0s elsewhere
+        int x = 0;
+        int y = 0;
+        auto SM = new SparseMatrix();
+
+        for (x = 0; x < row; ++x) {
+            for (y = 0; y < col; ++y) {
+                if (x == y) {
+                    SM->insert(x, y, 1);
+                }
+            }
+        }
+
+        return SM;
     }
 
     static SparseMatrix<T>& load_from_image(const std::string& filename) {

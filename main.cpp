@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     m1.insert(2, 2, 20);
     m1.insert(3, 5, 100);
     m1.insert(5, 5, 30); */
-
+/*
     m1.insert(1, 3, 20);
     m1.insert(2, 5, 30);
     cout << "filas: " << m1.rows << ", columnas: " << m1.columns << endl;
@@ -66,6 +66,11 @@ int main(int argc, char** argv) {
     cout << "filas: " << m1.rows << ", columnas: " << m1.columns << endl;
     cout << m1 << endl;
 
+ */
+
+    auto m2 = m1.identity(2, 2);
+
+    cout << *m2 << endl;
 
     //m1.erase(0, 0);
     //cout << "\nfilas: " << m1.rows << ", columnas: " << m1.columns << endl;
