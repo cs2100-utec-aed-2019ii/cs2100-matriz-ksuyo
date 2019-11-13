@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
  //   cout << m1 << endl;
 
     cout << m1 << endl;
+    cout << m1.columnsMatrix << " " << m1.rowsMatrix << endl;
   /*  auto m2 = SparseMatrix<double>::load_from_image("lenna.png");
     cout << *m2 << endl;
     cout << "filas ocupadas: " << m2->rows << ", columnas ocupadas: " << m2->columns << endl; */
@@ -57,7 +58,9 @@ template <typename T>
 SparseMatrix<T>& mult(const SparseMatrix<T>& sm1, const SparseMatrix<T>& sm2) {
     // TODO
     auto m1 = sm1.matrix();
-    
+    sm1.columnsMatrix;
+    sm1.rowsMatrix;
+
 }
 
 template <typename T>
