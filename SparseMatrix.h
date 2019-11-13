@@ -38,12 +38,14 @@ public:
                 }
                 contador++;
             }
+
             auto aux = busquedaX->down;
             if (aux->y > row) {
                 goto start;
             }
 
-            while (aux->y < row) {
+
+            while (aux->y < row && aux->down != nullptr) {
                 aux = aux->down;
             }
             if (aux->y == row){
@@ -216,7 +218,7 @@ public:
             auto temp = tempy->right;
             int contador = 0;
 
-            while(temp->right->x < new_node->y && contador < columns-1) {
+            while(temp->right != nullptr && temp->right->x < new_node->y && contador < columns-1) {
                 temp = temp->right;
                 contador++;
             }
@@ -345,6 +347,72 @@ public:
         delete nodeToDeleteX;
     }
 
+    /// Clear
+
+    void clear() {
+        if (columns == 0 && rows == 0) {
+            return;
+        }
+
+        /// Elimina todos los indices de X y los hijos de cada uno
+        if (columns == 1) {
+            auto node = xAxis->down;
+            while (node->down != nullptr) {
+                auto next = node->down;
+                delete node;
+                node = next;
+            }
+            delete node;
+            delete xAxis;
+        } else {
+            auto tempX = xAxis;
+            int contador = 0;
+            while (contador < columns) {
+                contador++;
+                auto hijosX = tempX->down;
+                while (hijosX->down != nullptr) {
+                    auto nextHijo = hijosX->down;
+                    delete hijosX;
+                    hijosX = nextHijo;
+                }
+                delete hijosX;
+                tempX = tempX->right;
+            }
+
+            contador = 0;
+            tempX = xAxis;
+            while (contador < columns) {
+                auto nextX = tempX->right;
+                delete tempX;
+                tempX = nextX;
+                contador++;
+            }
+
+        }
+
+        xAxis = nullptr;
+
+        /// Elimina todos los indices de Y
+        if (rows == 1) {
+            delete yAxis;
+        } else {
+            auto node = yAxis->down;
+
+            while (node->down != yAxis) {
+                auto next = node->down;
+                delete node;
+                node = next;
+            }
+            delete node;
+        }
+
+        yAxis = nullptr;
+
+        columns = 0;
+        rows = 0;
+
+    }
+
     /// Operator Overloading
 
     inline friend std::ostream& operator<< (std::ostream& os, SparseMatrix<T>& sm) {
@@ -386,7 +454,7 @@ public:
     }
 
     ~SparseMatrix() {
-        // TODO: free memory
+        clear();
     }
 };
 
