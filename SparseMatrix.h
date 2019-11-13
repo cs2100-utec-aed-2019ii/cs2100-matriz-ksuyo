@@ -476,10 +476,6 @@ public:
 
        return os;
 
-        // TODO: print matrix with 0s and the data. Example:
-        // 0 0 0 1
-        // 1 0 0 5
-        // 6 0 0 3
     }
 
     /// Static Methods
@@ -500,14 +496,15 @@ public:
 
         return SM;
     }
-    /*
-    SparseMatrix<T>* load_from_image(const std::string& filename) {
-        cv::Mat image = imread("/Users/benjamindiaz/Desktop/lenna.png", cv::IMREAD_COLOR);
+
+
+    static SparseMatrix<T>* load_from_image(const std::string& filename) {
+        cv::Mat image = imread("/Users/benjamindiaz/CLionProjects/Ciclo 4/cs2100-matriz-ksuyo/"+filename, cv::IMREAD_COLOR);
 
         auto h = image.rows;
         auto w = image.cols;
 
-        auto Matriz = new SparseMatrix;
+        auto Matriz = new SparseMatrix<T>;
 
         /// Iterating through image's pixels
         for (int r = 0; r < h; ++r) {
@@ -519,13 +516,13 @@ public:
                 auto colorAvg = (red + green + blue) / 3;
                 if (colorAvg < 200) {
                     Pixel pixel = Pixel(pixelData[2], pixelData[1], pixelData[0]);
-                    Matriz->insert(r, c, pixel);
+                    Matriz->insert(r, c, pixel.avg());
                 }
             }
         }
         return Matriz;
     }
-*/
+
     ~SparseMatrix() {
         clear();
     }

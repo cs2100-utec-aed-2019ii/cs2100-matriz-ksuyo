@@ -28,10 +28,12 @@ int main(int argc, char** argv) {
     m1.insert(2, 5, 30);
     m1.insert(5, 5, 40);
 
-    cout << "filas ocupadas: " << m1.rows << ", columnas ocupadas: " << m1.columns << endl;
+ //   cout << "filas ocupadas: " << m1.rows << ", columnas ocupadas: " << m1.columns << endl;
+ //   cout << m1 << endl;
 
-    cout << m1 << endl;
-
+    auto m2 = SparseMatrix<double>::load_from_image("lenna.png");
+    cout << *m2 << endl;
+    cout << "filas ocupadas: " << m2->rows << ", columnas ocupadas: " << m2->columns << endl;
     return 0;
 }
 
