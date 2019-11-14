@@ -480,7 +480,7 @@ public:
 
     /// Static Methods
 
-    SparseMatrix<T>* identity(const NumericType& row, const NumericType& col) {
+    static SparseMatrix<T>* identity(const NumericType& row, const NumericType& col) {
         // TODO: return matriz with 1s in the diagonal, 0s elsewhere
         int x;
         int y;

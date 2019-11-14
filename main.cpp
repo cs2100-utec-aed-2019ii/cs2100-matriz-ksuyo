@@ -33,6 +33,7 @@ int main(int argc, char** argv) {
     auto suma = add(m1, m2);
     auto mul = mult(m1, m2);
     auto trans = transpose(m1);
+	auto identity = SparseMatrix<double>::identity(3, 3);
 
     cout << "M1:\n" << m1 << endl;
     cout << "M2:\n" << m2 << endl;
@@ -40,7 +41,7 @@ int main(int argc, char** argv) {
     cout << "Suma (m1+m2):\n" << *suma << endl;
     cout << "Multiplicacion (m1*m2):\n" << *mul << endl;
     cout << "Transpuesta (m1)T:\n" << *trans << endl;
-
+	cout << "Identidad:\n" << *identity << endl;
     return 0;
 }
 
