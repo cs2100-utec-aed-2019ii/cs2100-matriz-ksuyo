@@ -24,10 +24,18 @@ int main(int argc, char** argv) {
     m1.insert(2, 2, 20);
     m1.insert(1, 0, 15);
 
+    SparseMatrix<double> m2;
+    m2.insert(0, 0, 5);
+    m2.insert(1, 1, 10);
+    m2.insert(2, 2, 20);
+    m2.insert(1, 0, 15);
+
+    auto m3 = transpose(m1);
+
     cout << m1 << endl;
 
-    auto m2 = mult(m1, m1);
-    cout << *m2 << endl;
+    cout << *m3 << endl;
+
     return 0;
 }
 
@@ -125,7 +133,26 @@ SparseMatrix<T>* add(SparseMatrix<T>& sm1, SparseMatrix<T>& sm2) {
 
 template <typename T>
 SparseMatrix<T>* transpose(SparseMatrix<T>& sm1) {
-    // TODO
+    auto m1 = sm1.matrix();
+    T  m3[sm1.rowsMatrix][sm1.columnsMatrix];
+
+    SparseMatrix<T> * m2 = new SparseMatrix<T>;
+
+    for(int i = 0; i < sm1.columnsMatrix; ++i)
+        for(int j = 0; j < sm1.rowsMatrix; ++j){
+                m3[i][j] = m1[j][i];
+        }
+
+
+    for(int i = 0; i < sm1.columnsMatrix; ++i){
+        for(int j = 0; j < sm1.rowsMatrix; ++j){
+            if (m3[i][j] != 0)
+                m2->insert(j,i,m3[i][j]);
+        }
+    }
+
+    return m2;
+
 }
 
 template <typename T>
