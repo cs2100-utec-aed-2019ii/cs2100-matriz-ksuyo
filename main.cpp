@@ -30,11 +30,16 @@ int main(int argc, char** argv) {
     m2.insert(2, 2, 20);
     m2.insert(1, 0, 15);
 
-    auto m3 = transpose(m1);
+    auto suma = add(m1, m2);
+    auto mul = mult(m1, m2);
+    auto trans = transpose(m1);
 
-    cout << m1 << endl;
+    cout << "M1:\n" << m1 << endl;
+    cout << "M2:\n" << m2 << endl;
 
-    cout << *m3 << endl;
+    cout << "Suma (m1+m2):\n" << *suma << endl;
+    cout << "Multiplicacion (m1*m2):\n" << *mul << endl;
+    cout << "Transpuesta (m1)T:\n" << *trans << endl;
 
     return 0;
 }
